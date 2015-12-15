@@ -8,7 +8,7 @@ var passiveCount = 0;
 var interval = 1000.0;
 var hasteCount = 0;
 var passiveTotal = 0;
-var passiveHaste = 0.0; //Start at 1000?
+var passiveHaste = 1000.0; //Start at 1000?
 var typehaste = "";
 var typecheck = "";
 var dualWieldUnlock = 0;
@@ -101,11 +101,11 @@ function buyHaste(skill){
         passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
 		
 	//Probably not necessary once we implement the below calculation
-	if (passiveHaste == 0) {passiveHaste = 0.1;}
-	else {passiveHaste = passiveHaste * 1.1;};
+//	if (passiveHaste == 0) {passiveHaste = 0.1;}
+//	else {passiveHaste = passiveHaste * 1.1;};
 	
 	//Update haste to always be 90% of the current haste value.
-	//passiveHaste = passiveHaste * 0.9
+	passiveHaste = passiveHaste * 0.9
 	
 	
     //passiveHaste = passiveHaste + 0.1;
@@ -193,8 +193,9 @@ function SetDualWield(){
 
 function ResetTimer(skill){
 	typehaste = skill + "Haste";
-    //passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);  Maybe comment this in.
-    interval = 1000 * (1-passiveHaste);  //Will need to be updated if passiveHaste is used to calculate each weapons' haste value
+    passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);  //Maybe comment this in.
+    interval = passiveHaste;
+    //interval = 1000 * (1-passiveHaste);  //Will need to be updated if passiveHaste is used to calculate each weapons' haste value
 	clearInterval(game);
 	
 	//document.getElementById('gameStatus').innerHTML = dualWieldUnlock;
