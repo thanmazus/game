@@ -11,6 +11,9 @@ var passiveTotal = 0;
 var passiveHaste = 0.0;
 var typehaste = "";
 var typecheck = "";
+var dualWieldUnlock = 0;
+var dualWieldFirst = "";
+var dualWieldSecond = "";
 
 function skillClick(skill){
     type = skill;
@@ -19,17 +22,19 @@ function skillClick(skill){
     document.getElementById(skill).innerHTML = skillLevel;
     UncheckAll();
     document.getElementById(typecheck).checked = true;
-    typehaste = skill + "Haste";
-    passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
-    interval = 1000 * (1-passiveHaste);
-	clearInterval(game);
+    ResetTimer(skill);
+    
+    //typehaste = skill + "Haste";
+    //passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
+    //interval = 1000 * (1-passiveHaste);
+	//clearInterval(game);
 	
 	
-	game = setInterval(function(){
-	passiveClick(type);
-	getTotalPoints();
-	document.getElementById('gameStatus').innerHTML = interval;
-	}, interval);
+	//game = setInterval(function(){
+	//passiveClick(type);
+	//getTotalPoints();
+	//document.getElementById('gameStatus').innerHTML = interval;
+	//}, interval);
 };
 
 function passiveClick(skill){
@@ -96,17 +101,19 @@ function buyHaste(skill){
         passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
 	if (passiveHaste == 0) {passiveHaste = 0.1;}
 	else {passiveHaste = passiveHaste * 1.1;};
+	
         //passiveHaste = passiveHaste + 0.1;
 	document.getElementById(typehaste).innerHTML = passiveHaste;
-	interval = 1000 * (1-passiveHaste);
-	clearInterval(game);
+	ResetTimer(skill);
+	//interval = 1000 * (1-passiveHaste);
+	//clearInterval(game);
 	
 	
-	game = setInterval(function(){
-	passiveClick(type);
-	getTotalPoints();
-	document.getElementById('gameStatus').innerHTML = interval;
-	}, interval);
+	//game = setInterval(function(){
+	//passiveClick(type);
+	//getTotalPoints();
+	//document.getElementById('gameStatus').innerHTML = interval;
+	//}, interval);
 };
 
 function UncheckAll(){ 
@@ -117,7 +124,110 @@ function UncheckAll(){
         }
       }
   } 
+  
+function enableAll(){ 
+      var w = document.getElementsByTagName('input'); 
+      for(var i = 0; i < w.length; i++){ 
+        if(w[i].type=='checkbox'){ 
+          w[i].readonly = false;
+          w[i].disabled = false; 
+        }
+      }
+  }
 
+function disableAll(){ 
+      var w = document.getElementsByTagName('input'); 
+      for(var i = 0; i < w.length; i++){ 
+        if(w[i].type=='checkbox'){ 
+          w[i].readonly = true;
+          w[i].disabled = true; 
+        }
+      }
+  }
+
+function dualWield(){
+	UncheckAll();
+	enableAll();
+}
+
+function SetDualWield(){
+	var counter = 0;
+	var skills=[];
+	var skillnames = [];
+	var w = document.getElementsByTagName('input'); 
+      for(var i = 0; i < w.length; i++){ 
+        if(w[i].type=='checkbox' && w[i].checked == true){ 
+          counter = counter +1;
+          skills.push(w[i].id);
+        }
+      }
+	if(counter != 2){
+		document.getElementById('gameStatus').innerHTML = "You Must Choose 2 Weapons!";
+	}
+	else if (counter == 2) {
+		disableAll();
+		
+		
+		var skillist = skills.length;
+		for (var i = 0; i < skillist; i++) {
+    		var skill = skills[i].substring(0, skills[i].length-5);
+    		skillnames.push(skill);
+    		
+		}
+		
+		dualWieldFirst = skillnames[0];
+		dualWieldSecond = skillnames[1];
+		
+		dualWieldUnlock = 1;
+		ResetTimer(dualWieldFirst);
+		
+	}
+	
+}
+
+function ResetTimer(skill){
+	typehaste = skill + "Haste";
+    //passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
+    interval = 1000 * (1-passiveHaste);
+	clearInterval(game);
+	
+	//document.getElementById('gameStatus').innerHTML = dualWieldUnlock;
+	if(dualWieldUnlock == 0) {
+		game = setInterval(function(){
+		passiveClick(type);
+		getTotalPoints();
+		document.getElementById('gameStatus').innerHTML = dualWieldUnlock;
+		}, interval);
+	}
+	else if (dualWieldUnlock == 1) {
+		document.getElementById('gameStatus').innerHTML = "FART";
+		game = setInterval(function(){
+		//passiveClick(dualWieldFirst);
+		//passiveClick(dualWieldSecond);
+		dualWieldClick(dualWieldFirst,dualWieldSecond);
+		getTotalPoints();
+		document.getElementById('gameStatus').innerHTML = "INSIDE THE DUAL WIELD SHIT";
+		}, interval);
+
+	}
+}
+
+function dualWieldClick(firstskill, secondskill){
+
+    firstpassiveType = "passive"+firstskill;
+    firsttypehaste = firstskill + "Haste";
+    firstpassiveCount = parseInt(document.getElementById(firstpassiveType).innerHTML);
+    //skillLevel =  parseInt(document.getElementById(skill).innerHTML) +passiveCount;
+	if (firstpassiveCount > 0) {firstskillLevel =  parseInt(document.getElementById(firstskill).innerHTML) +1;};
+    document.getElementById(firstskill).innerHTML = firstskillLevel;
+    
+    secondpassiveType = "passive"+secondskill;
+    secondtypehaste = secondskill + "Haste";
+    secondpassiveCount = parseInt(document.getElementById(secondpassiveType).innerHTML);
+    //skillLevel =  parseInt(document.getElementById(skill).innerHTML) +passiveCount;
+    if (secondpassiveCount > 0) {secondskillLevel =  parseInt(document.getElementById(secondskill).innerHTML) +1;};
+    document.getElementById(secondskill).innerHTML = secondskillLevel;
+};
 //window.setInterval(function(){
 //	
 //	passiveClick(type);
