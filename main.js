@@ -65,8 +65,8 @@ function load(){
 	if (typeof savegame.DaggerSkill !== "undefined") skillLevel = savegame.DaggerSkill;
 	if (typeof savegame.DaggerPassiveSkill !== "undefined") passive = savegame.DaggerPassiveSkill;
 	if (typeof savegame.Type !== "undefined") type = savegame.Type;
-        document.getElementById('dagger').innerHTML = skillLevel;  //updates the number of cookies for the user
-        document.getElementById('passivedagger').innerHTML = passive;  //updates the number of cursors for the user
+    document.getElementById('dagger').innerHTML = skillLevel;  //updates the number of cookies for the user
+    document.getElementById('passivedagger').innerHTML = passive;  //updates the number of cursors for the user
 	document.getElementById('gameStatus').innerHTML = "loaded";
 };
 
@@ -80,11 +80,19 @@ function getTotalPoints(){
 function buyHaste(skill){
         typehaste = skill + "Haste";
         passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
-	//if (passiveHaste = 0) {passiveHaste = 0.1;};
-	//if (passiveHaste > 0) {passiveHaste = passiveHaste * 1.1;};
-        passiveHaste = passiveHaste + 0.1;
+	if (passiveHaste == 0) {passiveHaste = 0.1;}
+	else {passiveHaste = passiveHaste * 1.1;};
+        //passiveHaste = passiveHaste + 0.1;
 	document.getElementById(typehaste).innerHTML = passiveHaste;
 	interval = 1000 * (1-passiveHaste);
+	clearInterval(game);
+	
+	
+	game = setInterval(function(){
+	passiveClick(type);
+	getTotalPoints();
+	document.getElementById('gameStatus').innerHTML = interval;
+	}, interval);
 };
 
 //window.setInterval(function(){
