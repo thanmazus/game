@@ -85,6 +85,14 @@ function buyHaste(skill){
         //passiveHaste = passiveHaste + 0.1;
 	document.getElementById(typehaste).innerHTML = passiveHaste;
 	interval = 1000 * (1-passiveHaste);
+	clearInterval(game);
+	
+	
+	game = setInterval(function(){
+	passiveClick(type);
+	getTotalPoints();
+	document.getElementById('gameStatus').innerHTML = interval;
+	}, interval);
 };
 
 //window.setInterval(function(){
