@@ -1,0 +1,50 @@
+#daggerDiv{
+	background-color: #003300;
+	color: #ffffff;
+	font-weight: bold;
+	border: #000000;
+	border-style: solid solid none solid;
+}
+#swordDiv{
+	background-color: #000099;
+	color: #ffffff;
+	font-weight: bold;
+	border: #000000;
+	border-style: solid solid none solid;
+}
+#specialSkillsDiv{
+	background-color: #993300;
+	color: #ffffff;
+	font-weight: bold;
+	border: #000000;
+	border-style: solid solid none solid;
+}
+#gameStatusDiv{
+	background-color: #660033;
+	color: #ffffff;
+	font-weight: bold;
+	border: #000000;
+	border-style: solid solid solid solid;
+}
+#daggerDiv button{
+	background-color: #339966;
+	text-shadow: 1px 1px #222222;
+	color: #ffffff;
+	font-weight: bold;
+}
+#swordDiv button{
+	background-color: #0099cc;
+	text-shadow: 1px 1px #222222;
+	color: #ffffff;
+	font-weight: bold;
+}
+#specialSkillsDiv button{
+	background-color: #ff6600;
+	color: #ffffff;
+	font-weight: bold;
+}
+#gameStatusDiv button{
+	background-color: #993366;
+	color: #ffffff;
+	font-weight: bold;
+}
