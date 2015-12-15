@@ -3,7 +3,7 @@ var type = "dagger";
 var skillLevel = 0;
 var passiveType = "test";
 var passiveTypeCost = "test";
-var passive = 0;
+var passive = 0.0;
 var passiveCount = 0;
 var interval = 1000.0;
 var hasteCount = 0;
@@ -14,6 +14,17 @@ var typecheck = "";
 var dualWieldUnlock = 0;
 var dualWieldFirst = "";
 var dualWieldSecond = "";
+
+var select = document.getElementById("daggerSelect"); 
+var daggerList =  [{id:1, name:'Beestinger', delay: 1234}, {id:2, name:'Hornetneedle', delay: 2345}];
+
+for(var i = 0; i < daggerList.length; i++) {
+    var opt = daggerList[i].name;
+    var el = document.createElement("option");
+    el.textContent = opt;
+    el.value = opt;
+    select.appendChild(el);
+};
 
 function skillClick(skill){
     type = skill;
@@ -50,7 +61,7 @@ function passiveClick(skill){
 function autoSkill(skill){
     passiveType = "passive"+skill;
     passiveTypeCost = "passive"+skill+"Cost";
-    passive = parseInt(document.getElementById(passiveType).innerHTML)
+    passive = parseFloat(document.getElementById(passiveType).innerHTML)
     var autoCost = Math.floor(10 * Math.pow(1.1,passive));     //works out the cost of this cursor
     
     skillLevel = parseInt(document.getElementById(skill).innerHTML);
@@ -260,6 +271,21 @@ function dualWieldClick(firstskill, secondskill){
 //	document.getElementById('gameStatus').innerHTML = interval;
 //	
 //}, interval);
+
+function itemChange(item){
+	var itemlist = item + "List";
+	var itemSelect = item + "Select";
+	for(var i = 0; i < daggerList.length; i++) {
+    	var opt = daggerList[i].name;
+    	window.alert(daggerSelect[i].name);
+    		if (opt == daggerSelect.selectedIndex.value) {
+    			window.alert(opt);
+    			itemhaste = item + "Haste";
+    			document.getElementById(itemhaste).innerHTML = daggerList[i].delay;
+    			ResetTimer(item);
+    		}
+	};
+}
 
 var game = setInterval(function(){
 passiveClick(type);
