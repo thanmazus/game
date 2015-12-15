@@ -277,9 +277,7 @@ function itemChange(item){
 	var itemSelect = item + "Select";
 	for(var i = 0; i < daggerList.length; i++) {
     	var opt = daggerList[i].name;
-    	window.alert(daggerSelect[i].name);
-    		if (opt == daggerSelect.selectedIndex.value) {
-    			window.alert(opt);
+    		if (opt == daggerList[daggerSelect.selectedIndex].name) {
     			itemhaste = item + "Haste";
     			document.getElementById(itemhaste).innerHTML = daggerList[i].delay;
     			ResetTimer(item);
