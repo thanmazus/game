@@ -97,19 +97,36 @@ function getTotalPoints(){
 };
 
 function buyHaste(skill){
-        typehaste = skill + "Haste";
-        passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
-		
+    typehaste = skill + "Haste";
+    passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
+	hasteLevel = parseInt(document.getElementById(skill + "HasteLevel").innerHTML);
+	availablePassivePoints = document.getElementById("passive" + skill).innerHTML;
+	
+	if(hasteLevel == 0){
+		upgradeCost = 10;
+	}
+	else {
+		upgradeCost = Math.floor(10 * Math.pow(15, hasteLevel));
+	}
+	
+	if (availablePassivePoints >= upgradeCost){
+		document.getElementById(typehaste).innerHTML = passiveHaste;
+		document.getElementById(skill + "HasteLevel").innerHTML = parseInt(hasteLevel + 1);
+		document.getElementById("passive" + skill).innerHTML = availablePassivePoints - upgradeCost;
+	}
+	else{
+		window.alert("Not enought passive points.");
+	}
 	//Probably not necessary once we implement the below calculation
-//	if (passiveHaste == 0) {passiveHaste = 0.1;}
-//	else {passiveHaste = passiveHaste * 1.1;};
+	//	if (passiveHaste == 0) {passiveHaste = 0.1;}
+	//	else {passiveHaste = passiveHaste * 1.1;};
 	
 	//Update haste to always be 90% of the current haste value.
 	passiveHaste = passiveHaste * 0.9
 	
 	
     //passiveHaste = passiveHaste + 0.1;
-	document.getElementById(typehaste).innerHTML = passiveHaste;
+	
 	ResetTimer(skill);
 	//interval = 1000 * (1-passiveHaste);
 	//clearInterval(game);
