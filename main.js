@@ -19,6 +19,17 @@ function skillClick(skill){
     document.getElementById(skill).innerHTML = skillLevel;
     UncheckAll();
     document.getElementById(typecheck).checked = true;
+    typehaste = skill + "Haste";
+    passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
+    interval = 1000 * (1-passiveHaste);
+	clearInterval(game);
+	
+	
+	game = setInterval(function(){
+	passiveClick(type);
+	getTotalPoints();
+	document.getElementById('gameStatus').innerHTML = interval;
+	}, interval);
 };
 
 function passiveClick(skill){
