@@ -177,24 +177,57 @@ function SetDualWield(){
 		
 		dualWieldFirst = skillnames[0];
 		dualWieldSecond = skillnames[1];
-		document.getElementById('gameStatus').innerHTML = dualWieldSecond;
+		
+		dualWieldUnlock = 1;
+		ResetTimer(dualWieldFirst);
+		
 	}
+	
 }
 
 function ResetTimer(skill){
 	typehaste = skill + "Haste";
-    passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
+    //passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
     interval = 1000 * (1-passiveHaste);
 	clearInterval(game);
 	
-	
-	game = setInterval(function(){
-	passiveClick(type);
-	getTotalPoints();
-	document.getElementById('gameStatus').innerHTML = interval;
-	}, interval);
+	//document.getElementById('gameStatus').innerHTML = dualWieldUnlock;
+	if(dualWieldUnlock == 0) {
+		game = setInterval(function(){
+		passiveClick(type);
+		getTotalPoints();
+		document.getElementById('gameStatus').innerHTML = dualWieldUnlock;
+		}, interval);
+	}
+	else if (dualWieldUnlock == 1) {
+		document.getElementById('gameStatus').innerHTML = "FART";
+		game = setInterval(function(){
+		//passiveClick(dualWieldFirst);
+		//passiveClick(dualWieldSecond);
+		dualWieldClick(dualWieldFirst,dualWieldSecond);
+		getTotalPoints();
+		document.getElementById('gameStatus').innerHTML = "INSIDE THE DUAL WIELD SHIT";
+		}, interval);
 
+	}
 }
+
+function dualWieldClick(firstskill, secondskill){
+
+    firstpassiveType = "passive"+firstskill;
+    firsttypehaste = firstskill + "Haste";
+    firstpassiveCount = parseInt(document.getElementById(firstpassiveType).innerHTML);
+    //skillLevel =  parseInt(document.getElementById(skill).innerHTML) +passiveCount;
+	if (firstpassiveCount > 0) {firstskillLevel =  parseInt(document.getElementById(firstskill).innerHTML) +1;};
+    document.getElementById(firstskill).innerHTML = firstskillLevel;
+    
+    secondpassiveType = "passive"+secondskill;
+    secondtypehaste = secondskill + "Haste";
+    secondpassiveCount = parseInt(document.getElementById(secondpassiveType).innerHTML);
+    //skillLevel =  parseInt(document.getElementById(skill).innerHTML) +passiveCount;
+    if (secondpassiveCount > 0) {secondskillLevel =  parseInt(document.getElementById(secondskill).innerHTML) +1;};
+    document.getElementById(secondskill).innerHTML = secondskillLevel;
+};
 //window.setInterval(function(){
 //	
 //	passiveClick(type);
