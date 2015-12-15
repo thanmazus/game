@@ -8,7 +8,7 @@ var passiveCount = 0;
 var interval = 1000.0;
 var hasteCount = 0;
 var passiveTotal = 0;
-var passiveHaste = 1000.0; //Start at 1000?
+var passiveHaste = 0.0; //Start at 1000?
 var typehaste = "";
 var typecheck = "";
 var dualWieldUnlock = 0;
@@ -110,6 +110,7 @@ function buyHaste(skill){
 	}
 	
 	if (availablePassivePoints >= upgradeCost){
+		passiveHaste = passiveHaste * 0.9
 		document.getElementById(typehaste).innerHTML = passiveHaste;
 		document.getElementById(skill + "HasteLevel").innerHTML = parseInt(hasteLevel + 1);
 		document.getElementById("passive" + skill).innerHTML = availablePassivePoints - upgradeCost;
@@ -122,7 +123,7 @@ function buyHaste(skill){
 	//	else {passiveHaste = passiveHaste * 1.1;};
 	
 	//Update haste to always be 90% of the current haste value.
-	passiveHaste = passiveHaste * 0.9
+	
 	
 	
     //passiveHaste = passiveHaste + 0.1;
@@ -220,7 +221,7 @@ function ResetTimer(skill){
 		game = setInterval(function(){
 		passiveClick(type);
 		getTotalPoints();
-		document.getElementById('gameStatus').innerHTML = dualWieldUnlock;
+		document.getElementById('gameStatus').innerHTML = typehaste;
 		}, interval);
 	}
 	else if (dualWieldUnlock == 1) {
