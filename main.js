@@ -10,11 +10,26 @@ var hasteCount = 0;
 var passiveTotal = 0;
 var passiveHaste = 0.0;
 var typehaste = "";
+var typecheck = "";
 
 function skillClick(skill){
     type = skill;
+    typecheck = skill+"Check";
     skillLevel =  parseInt(document.getElementById(skill).innerHTML) +1;
     document.getElementById(skill).innerHTML = skillLevel;
+    UncheckAll();
+    document.getElementById(typecheck).checked = true;
+    typehaste = skill + "Haste";
+    passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
+    interval = 1000 * (1-passiveHaste);
+	clearInterval(game);
+	
+	
+	game = setInterval(function(){
+	passiveClick(type);
+	getTotalPoints();
+	document.getElementById('gameStatus').innerHTML = interval;
+	}, interval);
 };
 
 function passiveClick(skill){
@@ -93,6 +108,15 @@ function buyHaste(skill){
 	document.getElementById('gameStatus').innerHTML = interval;
 	}, interval);
 };
+
+function UncheckAll(){ 
+      var w = document.getElementsByTagName('input'); 
+      for(var i = 0; i < w.length; i++){ 
+        if(w[i].type=='checkbox'){ 
+          w[i].checked = false; 
+        }
+      }
+  } 
 
 //window.setInterval(function(){
 //	
