@@ -11,6 +11,9 @@ var passiveTotal = 0;
 var passiveHaste = 0.0;
 var typehaste = "";
 var typecheck = "";
+var dualWieldUnlock = 0;
+var dualWieldFirst = "";
+var dualWieldSecond = "";
 
 function skillClick(skill){
     type = skill;
@@ -117,7 +120,62 @@ function UncheckAll(){
         }
       }
   } 
+  
+function enableAll(){ 
+      var w = document.getElementsByTagName('input'); 
+      for(var i = 0; i < w.length; i++){ 
+        if(w[i].type=='checkbox'){ 
+          w[i].readonly = false;
+          w[i].disabled = false; 
+        }
+      }
+  }
 
+function disableAll(){ 
+      var w = document.getElementsByTagName('input'); 
+      for(var i = 0; i < w.length; i++){ 
+        if(w[i].type=='checkbox'){ 
+          w[i].readonly = true;
+          w[i].disabled = true; 
+        }
+      }
+  }
+
+function dualWield(){
+	UncheckAll();
+	enableAll();
+}
+
+function SetDualWield(){
+	var counter = 0;
+	var skills=[];
+	var skillnames = [];
+	var w = document.getElementsByTagName('input'); 
+      for(var i = 0; i < w.length; i++){ 
+        if(w[i].type=='checkbox' && w[i].checked == true){ 
+          counter = counter +1;
+          skills.push(w[i].id);
+        }
+      }
+	if(counter != 2){
+		document.getElementById('gameStatus').innerHTML = "You Must Choose 2 Weapons!";
+	}
+	else if (counter == 2) {
+		disableAll();
+		
+		
+		var skillist = skills.length;
+		for (var i = 0; i < skillist; i++) {
+    		var skill = skills[i].substring(0, skills[i].length-5);
+    		skillnames.push(skill);
+    		
+		}
+		
+		dualWieldFirst = skillnames[0];
+		dualWieldSecond = skillnames[1];
+		document.getElementById('gameStatus').innerHTML = dualWieldSecond;
+	}
+}
 //window.setInterval(function(){
 //	
 //	passiveClick(type);
