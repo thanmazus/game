@@ -1,3 +1,4 @@
+// KYLE TEST LOL
 var type = "dagger";
 var skillLevel = 0;
 var passiveType = "test";
