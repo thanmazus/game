@@ -4,6 +4,7 @@
 	font-weight: bold;
 	border: #000000;
 	border-style: solid solid none solid;
+	width: 50%
 }
 #swordDiv{
 	background-color: #000099;
@@ -11,6 +12,7 @@
 	font-weight: bold;
 	border: #000000;
 	border-style: solid solid none solid;
+	width: 50%
 }
 #specialSkillsDiv{
 	background-color: #993300;
@@ -18,6 +20,7 @@
 	font-weight: bold;
 	border: #000000;
 	border-style: solid solid none solid;
+	width: 50%
 }
 #gameStatusDiv{
 	background-color: #660033;
@@ -25,6 +28,7 @@
 	font-weight: bold;
 	border: #000000;
 	border-style: solid solid solid solid;
+	width: 50%
 }
 #daggerDiv button{
 	background-color: #339966;
