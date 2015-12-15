@@ -10,7 +10,6 @@ var hasteCount = 0;
 var passiveTotal = 0;
 var passiveHaste = 0.0;
 var typehaste = "";
-game = 1;
 
 function skillClick(skill){
     type = skill;
