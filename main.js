@@ -1,0 +1,101 @@
+var type = "dagger";
+var skillLevel = 0;
+var passiveType = "test";
+var passiveTypeCost = "test";
+var passive = 0;
+var passiveCount = 0;
+var interval = 1000.0;
+var hasteCount = 0;
+var passiveTotal = 0;
+var passiveHaste = 0.0;
+var typehaste = "";
+game = 1;
+
+function skillClick(skill){
+    type = skill;
+    skillLevel =  parseInt(document.getElementById(skill).innerHTML) +1;
+    document.getElementById(skill).innerHTML = skillLevel;
+};
+
+function passiveClick(skill){
+
+    passiveType = "passive"+skill;
+    typehaste = skill + "Haste";
+    passiveCount = parseInt(document.getElementById(passiveType).innerHTML);
+    //skillLevel =  parseInt(document.getElementById(skill).innerHTML) +passiveCount;
+    if (passiveCount > 0) {skillLevel =  parseInt(document.getElementById(skill).innerHTML) +1;};
+    document.getElementById(skill).innerHTML = skillLevel;
+};
+
+function autoSkill(skill){
+    passiveType = "passive"+skill;
+    passiveTypeCost = "passive"+skill+"Cost";
+    passive = parseInt(document.getElementById(passiveType).innerHTML)
+    var autoCost = Math.floor(10 * Math.pow(1.1,passive));     //works out the cost of this cursor
+    
+    skillLevel = parseInt(document.getElementById(skill).innerHTML);
+    //document.getElementById(skill).innerHTML = passiveType;
+    if(skillLevel >= autoCost){                                   //checks that the player can afford the cursor
+        passive = passive + 1;                                   //increases number of cursors
+        document.getElementById(skill).innerHTML = passive;
+    	skillLevel = skillLevel - autoCost;                          //removes the cookies spent
+	document.getElementById(skill).innerHTML = passiveType;
+        document.getElementById(skill).innerHTML = skillLevel;  //updates the number of cursors for the user
+        document.getElementById(passiveType).innerHTML = passive;  //updates the number of cookies for the user
+    };
+    var nextCost = Math.floor(10 * Math.pow(1.1,passive));       //works out the cost of the next cursor
+    document.getElementById(passiveTypeCost).innerHTML = nextCost;  //updates the cursor cost for the user
+};
+
+function save(){
+
+	var save = {
+	DaggerSkill: parseInt(document.getElementById('dagger').innerHTML),
+	DaggerPassiveSkill:  parseInt(document.getElementById('passivedagger').innerHTML),
+        Type: type
+	};
+
+	localStorage.setItem("save",JSON.stringify(save));
+	document.getElementById('gameStatus').innerHTML = "saved";
+};
+
+function load(){
+	var savegame = JSON.parse(localStorage.getItem("save"));
+	if (typeof savegame.DaggerSkill !== "undefined") skillLevel = savegame.DaggerSkill;
+	if (typeof savegame.DaggerPassiveSkill !== "undefined") passive = savegame.DaggerPassiveSkill;
+	if (typeof savegame.Type !== "undefined") type = savegame.Type;
+        document.getElementById('dagger').innerHTML = skillLevel;  //updates the number of cookies for the user
+        document.getElementById('passivedagger').innerHTML = passive;  //updates the number of cursors for the user
+	document.getElementById('gameStatus').innerHTML = "loaded";
+};
+
+function getTotalPoints(){
+	passiveTotal = 0;
+        passiveTotal = passiveTotal + parseInt(document.getElementById('passivedagger').innerHTML);
+        passiveTotal = passiveTotal + parseInt(document.getElementById('passivesword').innerHTML);
+	document.getElementById('passivePoints').innerHTML = passiveTotal;
+};
+
+function buyHaste(skill){
+        typehaste = skill + "Haste";
+        passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
+	//if (passiveHaste = 0) {passiveHaste = 0.1;};
+	//if (passiveHaste > 0) {passiveHaste = passiveHaste * 1.1;};
+        passiveHaste = passiveHaste + 0.1;
+	document.getElementById(typehaste).innerHTML = passiveHaste;
+	interval = 1000 * (1-passiveHaste);
+};
+
+//window.setInterval(function(){
+//	
+//	passiveClick(type);
+//        getTotalPoints();
+//	document.getElementById('gameStatus').innerHTML = interval;
+//	
+//}, interval);
+
+var game = setInterval(function(){
+passiveClick(type);
+getTotalPoints();
+document.getElementById('gameStatus').innerHTML = interval;
+}, interval);
