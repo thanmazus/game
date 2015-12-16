@@ -280,13 +280,26 @@ function itemChange(item){
     		if (opt == this[itemList][this[itemSelect].selectedIndex].name) {
     			itemhaste = item + "Haste";
     			document.getElementById(itemhaste).innerHTML = this[itemList][i].delay;
-    			ResetTimer(item);
+    			recalculateHaste(item);
     		}
 	};
+}
+
+function recalculateHaste(skill){
+	typehaste = skill + "Haste";
+    passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
+	hasteLevel = parseInt(document.getElementById(skill + "HasteLevel").innerHTML);
+	
+	for (var i = 0; i < hasteLevel; i++) {
+    		passiveHaste = passiveHaste * .9;    		
+		}
+		document.getElementById(typehaste).innerHTML = passiveHaste;
+	ResetTimer(skill);
 }
 
 var game = setInterval(function(){
 passiveClick(type);
 getTotalPoints();
+itemChange(type);
 document.getElementById('gameStatus').innerHTML = interval;
 }, interval);
