@@ -279,7 +279,7 @@ function itemChange(item){
     	var opt = this[itemList][i].name;
     		if (opt == this[itemList][this[itemSelect].selectedIndex].name) {
     			itemhaste = item + "Haste";
-    			document.getElementById(itemhaste).innerHTML = daggerList[i].delay;
+    			document.getElementById(itemhaste).innerHTML = this[itemList][i].delay;
     			ResetTimer(item);
     		}
 	};
