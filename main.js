@@ -273,11 +273,11 @@ function dualWieldClick(firstskill, secondskill){
 //}, interval);
 
 function itemChange(item){
-	var itemlist = item + "List";
+	var itemList = item + "List";
 	var itemSelect = item + "Select";
-	for(var i = 0; i < daggerList.length; i++) {
-    	var opt = daggerList[i].name;
-    		if (opt == daggerList[daggerSelect.selectedIndex].name) {
+	for(var i = 0; i < this[itemList].length; i++) {
+    	var opt = this[itemList][i].name;
+    		if (opt == this[itemList][this[itemSelect].selectedIndex].name) {
     			itemhaste = item + "Haste";
     			document.getElementById(itemhaste).innerHTML = daggerList[i].delay;
     			ResetTimer(item);
