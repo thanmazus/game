@@ -236,14 +236,17 @@ function ResetTimer(skill){
 		}, interval);
 	}
 	else if (dualWieldUnlock == 1) {
-		document.getElementById('gameStatus').innerHTML = "FART";
+		var dualWieldHaste;
+		dualWieldHaste = parseFloat(document.getElementById(dualWieldFirst+"Haste").innerHTML);
+		dualWieldHaste = dualWieldHaste + parseFloat(document.getElementById(dualWieldSecond+"Haste").innerHTML);
+		dualWieldHaste = (dualWieldHaste / 2) * .9;
 		game = setInterval(function(){
 		//passiveClick(dualWieldFirst);
 		//passiveClick(dualWieldSecond);
 		dualWieldClick(dualWieldFirst,dualWieldSecond);
 		getTotalPoints();
-		document.getElementById('gameStatus').innerHTML = "INSIDE THE DUAL WIELD SHIT";
-		}, interval);
+		document.getElementById('gameStatus').innerHTML = "INSIDE THE DUAL WIELD SHIT" + dualWieldHaste;
+		}, dualWieldHaste);
 
 	}
 }
