@@ -61,18 +61,18 @@ function passiveClick(skill){
 function autoSkill(skill){
     passiveType = "passive"+skill;
     passiveTypeCost = "passive"+skill+"Cost";
-    passive = parseFloat(document.getElementById(passiveType).innerHTML)
+    passive = parseFloat(document.getElementById(passiveType).innerHTML);
+	characterPoints = parseInt(document.getElementById('characterPoints').innerHTML);
     var autoCost = Math.floor(10 * Math.pow(1.1,passive));     //works out the cost of this cursor
     
     skillLevel = parseInt(document.getElementById(skill).innerHTML);
-    //document.getElementById(skill).innerHTML = passiveType;
-    if(skillLevel >= autoCost){                                   //checks that the player can afford the cursor
-        passive = passive + 1;                                   //increases number of cursors
-        document.getElementById(skill).innerHTML = passive;
-    	skillLevel = skillLevel - autoCost;                          //removes the cookies spent
-	document.getElementById(skill).innerHTML = passiveType;
-        document.getElementById(skill).innerHTML = skillLevel;  //updates the number of cursors for the user
-        document.getElementById(passiveType).innerHTML = passive;  //updates the number of cookies for the user
+    if(skillLevel >= autoCost){                                   		//checks that the player can afford the cursor
+        passive += 1; 													//Increment total passive points for the given weapon
+		characterPoints += 1;											//Increment total character points.
+    	skillLevel = skillLevel - autoCost;                          	//deducts the cost of the upgrade from the current weapons skill points.
+        document.getElementById(skill).innerHTML = skillLevel;  		//updates the number of skill points
+        document.getElementById(passiveType).innerHTML = passive;  		//updates the number of passive points
+		document.getElementById('characterPoints').innerHTML = characterPoints;
     };
     var nextCost = Math.floor(10 * Math.pow(1.1,passive));       //works out the cost of the next cursor
     document.getElementById(passiveTypeCost).innerHTML = nextCost;  //updates the cursor cost for the user
@@ -102,9 +102,9 @@ function load(){
 
 function getTotalPoints(){
 	passiveTotal = 0;
-        passiveTotal = passiveTotal + parseInt(document.getElementById('passivedagger').innerHTML);
-        passiveTotal = passiveTotal + parseInt(document.getElementById('passivesword').innerHTML);
-	document.getElementById('passivePoints').innerHTML = passiveTotal;
+	passiveTotal = passiveTotal + parseInt(document.getElementById('passivedagger').innerHTML);
+	passiveTotal = passiveTotal + parseInt(document.getElementById('passivesword').innerHTML);
+	//document.getElementById('passivePoints').innerHTML = passiveTotal;
 };
 
 function buyHaste(skill){
@@ -295,6 +295,21 @@ function recalculateHaste(skill){
 		}
 		document.getElementById(typehaste).innerHTML = passiveHaste;
 	ResetTimer(skill);
+}
+
+function spendCharacterPoints(){
+	var characterPoints = parseInt(document.getElementById('characterPoints').innerHTML);
+	var characterLevel = parseInt(document.getElementById('characterLevel').innerHTML);
+	var cost = parseInt(document.getElementById('levelUpCost').innerHTML);
+	if (characterPoints >= cost){
+		document.getElementById('characterPoints').innerHTML = characterPoints - cost;
+		document.getElementById('characterLevel').innerHTML = characterLevel + 1;
+		var nextCost = Math.floor(5 * Math.pow(2, characterLevel));
+		document.getElementById('levelUpCost').innerHTML = nextCost;
+	}
+	else {
+		window.alert("Not enough character points to level up.")
+	}	
 }
 
 var game = setInterval(function(){

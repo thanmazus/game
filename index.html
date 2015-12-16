@@ -8,7 +8,7 @@
 			</select>
 			<input type = "checkbox" id = "daggerCheck" disabled readonly> <button onclick="skillClick('dagger')">Level Dagger Skill</button>  Dagger Skill: <span id="dagger">0</span>
 			<br />
-			<button onclick="autoSkill('dagger')">Passive Training</button> Passive Points Earned: <span id="passivedagger">10000</span>
+			<button onclick="autoSkill('dagger')">Passive Training</button> Passive Points Earned: <span id="passivedagger">0</span>
 			<br />
 			Passive Points Cost: <span id="passivedaggerCost">10</span>
 			<br />
@@ -20,7 +20,7 @@
 		<div id='swordDiv'>
 			<input type = "checkbox" id = "swordCheck" disabled readonly> <button onclick="skillClick('sword')">Level Sword Skill</button>  Sword Skill: <span id="sword">0</span>
 			<br />
-			<button onclick="autoSkill('sword')">Passive Training</button> Passive Points Earned: <span id="passivesword">10000</span>
+			<button onclick="autoSkill('sword')">Passive Training</button> Passive Points Earned: <span id="passivesword">0</span>
 			<br />
 			Passive Points Cost: <span id="passiveswordCost">10</span>
 			<br />
@@ -33,12 +33,19 @@
 			Special Skills
 			<br />
 			Dual Wield : <button onclick="dualWield()">Set up Dual Wield</button> <button onclick="SetDualWield()">Set Dual Wield</button>
+			<br />
+			Character Level: <span id="characterLevel">1</span>
+			<br />
+			Total Character Points: <span id="characterPoints">50</span>
+			<br />
+			Level Up Cost: <span id="levelUpCost">5</span>
+			<br />
+			<button onclick="spendCharacterPoints()">Spend Character Points</button>
 		</div>
 		<div id="gameStatusDiv">
 			Game Status: <span id="gameStatus">0</span>
 			<br />
-			Total Passive Points: <span id="passivePoints">0</span>
-			<br />
+			
 			<button onclick="save()">SAVE</button> <button onclick="load()">LOAD</button>
 			<br />
 		</div>
