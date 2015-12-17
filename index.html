@@ -29,10 +29,23 @@
 			<button onclick="buyHaste('sword')">Buy Haste</button>  Haste Level: <span id="swordHasteLevel">0</span> <!-- Stores the number of times the user upgrades Haste -->
 			<br />
 		</div>
+		<div id='hammerDiv'>
+			<input type = "checkbox" id = "hammerCheck" disabled readonly> <button onclick="skillClick('hammer')">Level hammer Skill</button>  hammer Skill: <span id="hammer">0</span>
+			<br />
+			<button onclick="autoSkill('hammer')">Passive Training</button> Passive Points Earned: <span id="passivehammer">0</span>
+			<br />
+			Passive Points Cost: <span id="passivehammerCost">10</span>
+			<br />
+			hammer Delay: <span id="hammerHaste">3000</span> <!-- Start at 1000? -->
+			<br />
+			<button onclick="buyHaste('hammer')">Buy Haste</button>  Haste Level: <span id="hammerHasteLevel">0</span> <!-- Stores the number of times the user upgrades Haste -->
+			<br />
+		</div>
 		<div id="specialSkillsDiv">
 			Special Skills
 			<br />
 			Dual Wield : <button onclick="dualWield()">Set up Dual Wield</button> <button onclick="SetDualWield()">Set Dual Wield</button>
+			<span id="isDualWielding" hidden>false</span>
 			<br />
 			Character Level: <span id="characterLevel">1</span>
 			<br />

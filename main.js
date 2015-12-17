@@ -27,25 +27,37 @@ for(var i = 0; i < daggerList.length; i++) {
 };
 
 function skillClick(skill){
-    type = skill;
-    typecheck = skill+"Check";
-    skillLevel =  parseInt(document.getElementById(skill).innerHTML) +1;
-    document.getElementById(skill).innerHTML = skillLevel;
-    UncheckAll();
-    document.getElementById(typecheck).checked = true;
-    ResetTimer(skill);
-    
-    //typehaste = skill + "Haste";
-    //passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
-    //interval = 1000 * (1-passiveHaste);
-	//clearInterval(game);
+    var type = skill;
+    var typecheck = skill+"Check";
+	var check = document.getElementById(typecheck).checked;
+	var dw = document.getElementById('isDualWielding').innerHTML;
 	
-	
-	//game = setInterval(function(){
-	//passiveClick(type);
-	//getTotalPoints();
-	//document.getElementById('gameStatus').innerHTML = interval;
-	//}, interval);
+	if (!check && dw == "true"){
+		window.alert("You need to put this weapon in your hand before skilling up!");
+	}
+	else {
+		skillLevel =  parseInt(document.getElementById(skill).innerHTML) +1;
+		document.getElementById(skill).innerHTML = skillLevel;
+		
+		//With the new check above, this uncheckAll() should not be needed.
+		//uncheckAll();
+		
+		
+		document.getElementById(typecheck).checked = true;
+		resetTime(skill);
+		
+		//typehaste = skill + "Haste";
+		//passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
+		//interval = 1000 * (1-passiveHaste);
+		//clearInterval(game);
+		
+		
+		//game = setInterval(function(){
+		//passiveClick(type);
+		//getTotalPoints();
+		//document.getElementById('gameStatus').innerHTML = interval;
+		//}, interval);
+	}
 };
 
 function passiveClick(skill){
@@ -139,7 +151,7 @@ function buyHaste(skill){
 	
     //passiveHaste = passiveHaste + 0.1;
 	
-	ResetTimer(skill);
+	resetTime(skill);
 	//interval = 1000 * (1-passiveHaste);
 	//clearInterval(game);
 	
@@ -151,7 +163,7 @@ function buyHaste(skill){
 	//}, interval);
 };
 
-function UncheckAll(){ 
+function uncheckAll(){ 
       var w = document.getElementsByTagName('input'); 
       for(var i = 0; i < w.length; i++){ 
         if(w[i].type=='checkbox'){ 
@@ -181,7 +193,7 @@ function disableAll(){
   }
 
 function dualWield(){
-	UncheckAll();
+	uncheckAll();
 	enableAll();
 }
 
@@ -214,13 +226,14 @@ function SetDualWield(){
 		dualWieldSecond = skillnames[1];
 		
 		dualWieldUnlock = 1;
-		ResetTimer(dualWieldFirst);
+		resetTime(dualWieldFirst);
+		document.getElementById('isDualWielding').innerHTML = true;
 		
 	}
 	
 }
 
-function ResetTimer(skill){
+function resetTime(skill){
 	typehaste = skill + "Haste";
     passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);  //Maybe comment this in.
     interval = passiveHaste;
@@ -297,7 +310,7 @@ function recalculateHaste(skill){
     		passiveHaste = passiveHaste * .9;    		
 		}
 		document.getElementById(typehaste).innerHTML = passiveHaste;
-	ResetTimer(skill);
+	resetTime(skill);
 }
 
 function spendCharacterPoints(){
