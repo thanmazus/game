@@ -33,31 +33,29 @@ function skillClick(skill){
 	var dw = document.getElementById('isDualWielding').innerHTML;
 	
 	if (!check && dw == "true"){
-		window.alert("You need to put this weapon in your hand before skilling up!");
+		uncheckAll();
 	}
-	else {
-		skillLevel =  parseInt(document.getElementById(skill).innerHTML) +1;
-		document.getElementById(skill).innerHTML = skillLevel;
-		
-		//With the new check above, this uncheckAll() should not be needed.
-		//uncheckAll();
-		
-		
-		document.getElementById(typecheck).checked = true;
-		resetTime(skill);
-		
-		//typehaste = skill + "Haste";
-		//passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
-		//interval = 1000 * (1-passiveHaste);
-		//clearInterval(game);
-		
-		
-		//game = setInterval(function(){
-		//passiveClick(type);
-		//getTotalPoints();
-		//document.getElementById('gameStatus').innerHTML = interval;
-		//}, interval);
-	}
+	skillLevel =  parseInt(document.getElementById(skill).innerHTML) +1;
+	document.getElementById(skill).innerHTML = skillLevel;
+	
+	if(dw == "false"){
+		uncheckAll();
+	}		
+	
+	document.getElementById(typecheck).checked = true;
+	resetTime(skill);
+	
+	//typehaste = skill + "Haste";
+	//passiveHaste = parseFloat(document.getElementById(typehaste).innerHTML);
+	//interval = 1000 * (1-passiveHaste);
+	//clearInterval(game);
+	
+	
+	//game = setInterval(function(){
+	//passiveClick(type);
+	//getTotalPoints();
+	//document.getElementById('gameStatus').innerHTML = interval;
+	//}, interval);
 };
 
 function passiveClick(skill){
@@ -266,13 +264,16 @@ function resetTime(skill){
 
 function dualWieldClick(firstskill, secondskill){
 
+	var firstskillLevel;
+	var secondskillLevel;
     firstpassiveType = "passive"+firstskill;
     firsttypehaste = firstskill + "Haste";
     firstpassiveCount = parseInt(document.getElementById(firstpassiveType).innerHTML);
     //skillLevel =  parseInt(document.getElementById(skill).innerHTML) +passiveCount;
-	if (firstpassiveCount > 0) {firstskillLevel =  parseInt(document.getElementById(firstskill).innerHTML) +1;};
-    document.getElementById(firstskill).innerHTML = firstskillLevel;
-    
+	if (firstpassiveCount > 0) {
+		firstskillLevel =  parseInt(document.getElementById(firstskill).innerHTML) +1;
+	};
+    document.getElementById(firstskill).innerHTML = firstskillLevel;    
     secondpassiveType = "passive"+secondskill;
     secondtypehaste = secondskill + "Haste";
     secondpassiveCount = parseInt(document.getElementById(secondpassiveType).innerHTML);

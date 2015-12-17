@@ -14,6 +14,14 @@
 	border-style: solid solid none solid;
 	width: 50%
 }
+#hammerDiv{
+	background-color: #996633;
+	color: #ffffff;
+	font-weight: bold;
+	border: #000000;
+	border-style: solid solid none solid;
+	width: 50%
+}
 #specialSkillsDiv{
 	background-color: #993300;
 	color: #ffffff;
@@ -38,6 +46,12 @@
 }
 #swordDiv button{
 	background-color: #0099cc;
+	text-shadow: 1px 1px #222222;
+	color: #ffffff;
+	font-weight: bold;
+}
+#hammerDiv button{
+	background-color: #cc9900;
 	text-shadow: 1px 1px #222222;
 	color: #ffffff;
 	font-weight: bold;
