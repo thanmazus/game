@@ -1,4 +1,4 @@
-// TEST LOL
+// TEST LOL 1
 var type = "dagger";
 var skillLevel = 0;
 var passiveType = "test";
@@ -241,7 +241,7 @@ function resetTime(skill){
 	//document.getElementById('gameStatus').innerHTML = dualWieldUnlock;
 	if(dualWieldUnlock == 0) {
 		game = setInterval(function(){
-		passiveClick(type);
+		passiveClick(skill);
 		getTotalPoints();
 		document.getElementById('gameStatus').innerHTML = typehaste;
 		}, interval);
