@@ -20,13 +20,15 @@
 	<body>
 		<h1>Character Sheet</h1>
 		<div class='weapon' id='dagger'>
-			<input type = "checkbox" id = "daggerCheck" disabled readonly> <input class="skill-btn" id='daggerSkillButton' type="button" value="Level Dagger Skill"> 
+			<input type = "checkbox" class='weaponCheck' id = "daggerCheck" disabled readonly> 
+			<input class="skill-btn" id='daggerSkillButton' type="button" value="Level Dagger Skill"> 
 			Dagger Skill: <input type"text" id="skillLevel" value="{{ dagger_skill }}" disabled>
 			
 		</div>
 
 		<div class='weapon' id='sword'>
-			<input type = "checkbox" id = "swordCheck" disabled readonly> <input class="skill-btn" id='swordSkillButton' type="button" value="Level Sword Skill"> 
+			<input type = "checkbox" class='weaponCheck' id = "swordCheck" disabled readonly> 
+			<input class="skill-btn" id='swordSkillButton' type="button" value="Level Sword Skill"> 
 			Sword Skill: <input type"text" id="skillLevel" value="{{ sword_skill }}" disabled>
 			
 		</div>

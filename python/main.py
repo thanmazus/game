@@ -9,10 +9,10 @@ def home():
 	return render_template('index.html', dagger_skill=0, sword_skill=0)
 
 @app.route('/skillUp', methods=['GET', 'POST'])
-def skillUpDagger():
+def skillUp():
 	skill = request.args.get('skill')
 	level = int(request.args.get('level'))
-
+	
 	level += 1
 	return jsonify(dagger_skill=level)
 
