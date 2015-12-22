@@ -49,3 +49,4 @@ Temporary Items
 
 # Python extras for virtual environment
 python/game/
+*.pyc
