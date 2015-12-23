@@ -25,6 +25,20 @@ class R1Collector(BaseServerStructure):
         self.r1_collection_rate = r1_collection_rate
 
 
+class R2Collector(BaseServerStructure):
+    def __init__(self, name="R2Collector", hp=500, level=1, r2_cur_storage=0,
+                 r2_storage_cap=1000, r2_collection_rate=1):
+        BaseServerStructure.__init__(self, name, hp, level)
+        self.r2_cur_storage = r2_cur_storage
+        self.r2_storage_cap = r2_storage_cap
+        self.r2_collection_rate = r2_collection_rate
+
+
 class Worm(BaseVirusUnit):
     def __init__(self, name="Worm", hp=100, level=1, damage=100, speed=1):
+        BaseVirusUnit.__init__(self, name, hp, level, damage, speed)
+
+
+class Bot(BaseVirusUnit):
+    def __init__(self, name="Bot", hp=150, level=1, damage=80, speed=1):
         BaseVirusUnit.__init__(self, name, hp, level, damage, speed)
