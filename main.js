@@ -18,6 +18,32 @@ var dualWieldActive = 0;
 
 var select = document.getElementById("daggerSelect"); 
 var daggerList =  [{id:1, name:'Beestinger', delay: 1234}, {id:2, name:'Hornetneedle', delay: 2345}];
+var characterHPScoreList = [
+				 {id:1, Scale:9, Base: 19, Bonus: 1},
+				 {id:2, Scale:8, Base: 17, Bonus: 1}, 
+				 {id:3, Scale:7, Base: 16, Bonus: 1}, 
+				 {id:4, Scale:6, Base: 14, Bonus: 0}, 
+				 {id:5, Scale:5, Base: 13, Bonus: 0}, 
+				 {id:6, Scale:4, Base: 11, Bonus: 0}, 
+				 {id:7, Scale:3, Base: 10, Bonus: 0}];
+
+var characterMPScoreList = [
+				 {id:1, Scale:6, Base: 16},
+				 {id:2, Scale:5, Base: 14}, 
+				 {id:3, Scale:4, Base: 12}, 
+				 {id:4, Scale:3, Base: 10}, 
+				 {id:5, Scale:2, Base: 8}, 
+				 {id:6, Scale:1, Base: 6}, 
+				 {id:7, Scale:0.5, Base: 4}];
+
+var characterStatScoreList = [
+				 {id:1, Scale:0.5, Base: 5},
+				 {id:2, Scale:0.45, Base: 4}, 
+				 {id:3, Scale:0.4, Base: 4}, 
+				 {id:4, Scale:0.3, Base: 3}, 
+				 {id:5, Scale:0.3, Base: 3}, 
+				 {id:6, Scale:0.25, Base: 2}, 
+				 {id:7, Scale:0.2, Base: 2}];
 
 for(var i = 0; i < daggerList.length; i++) {
     var opt = daggerList[i].name;
