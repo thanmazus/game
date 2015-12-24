@@ -49,7 +49,7 @@ var characterStatScoreList = [
 				 {id:1, Scale:0.5, Base: 5},
 				 {id:2, Scale:0.45, Base: 4}, 
 				 {id:3, Scale:0.4, Base: 4}, 
-				 {id:4, Scale:0.3, Base: 3}, 
+				 {id:4, Scale:0.34, Base: 3}, 
 				 {id:5, Scale:0.3, Base: 3}, 
 				 {id:6, Scale:0.25, Base: 2}, 
 				 {id:7, Scale:0.2, Base: 2}];
@@ -362,15 +362,15 @@ function spendCharacterPoints(){
 		var nextCost = Math.floor(5 * Math.pow(2, characterLevel));
 		document.getElementById('levelUpCost').innerHTML = nextCost;
 		
-		var characterHP = parseFloat(document.getElementById('characterHP').innerHTML);
-		var characterMP = parseFloat(document.getElementById('characterMP').innerHTML);
-		var characterSTR = parseFloat(document.getElementById('characterSTR').innerHTML);
-		var characterDEX = parseFloat(document.getElementById('characterDEX').innerHTML);
-		var characterVIT = parseFloat(document.getElementById('characterVIT').innerHTML);
-		var characterAGI = parseFloat(document.getElementById('characterAGI').innerHTML);
-		var characterINT = parseFloat(document.getElementById('characterINT').innerHTML);
-		var characterMND = parseFloat(document.getElementById('characterMND').innerHTML);
-		var characterCHA = parseFloat(document.getElementById('characterCHA').innerHTML);
+		var characterHP = parseFloat(document.getElementById('characterHPHidden').innerHTML);
+		var characterMP = parseFloat(document.getElementById('characterMPHidden').innerHTML);
+		var characterSTR = parseFloat(document.getElementById('characterSTRHidden').innerHTML);
+		var characterDEX = parseFloat(document.getElementById('characterDEXHidden').innerHTML);
+		var characterVIT = parseFloat(document.getElementById('characterVITHidden').innerHTML);
+		var characterAGI = parseFloat(document.getElementById('characterAGIHidden').innerHTML);
+		var characterINT = parseFloat(document.getElementById('characterINTHidden').innerHTML);
+		var characterMND = parseFloat(document.getElementById('characterMNDHidden').innerHTML);
+		var characterCHA = parseFloat(document.getElementById('characterCHAHidden').innerHTML);
 		
 		var characterHP = characterHP + characterHPScoreList[3].Scale;
 		var characterMP = characterMP + characterMPScoreList[3].Scale;
@@ -381,6 +381,26 @@ function spendCharacterPoints(){
 		var characterINT = characterINT + characterStatScoreList[3].Scale;
 		var characterMND = characterMND + characterStatScoreList[3].Scale;
 		var characterCHA = characterCHA + characterStatScoreList[3].Scale;
+		
+		document.getElementById('characterHPHidden').innerHTML = characterHP;
+		document.getElementById('characterMPHidden').innerHTML = characterMP;
+		document.getElementById('characterSTRHidden').innerHTML = characterSTR.toFixed(2);
+		document.getElementById('characterDEXHidden').innerHTML = characterDEX;
+		document.getElementById('characterVITHidden').innerHTML = characterVIT;
+		document.getElementById('characterAGIHidden').innerHTML = characterAGI;
+		document.getElementById('characterINTHidden').innerHTML = characterINT;
+		document.getElementById('characterMNDHidden').innerHTML = characterMND;
+		document.getElementById('characterCHAHidden').innerHTML = characterCHA;
+		
+		var characterHP = Math.floor(characterHP);
+		var characterMP = Math.floor(characterMP);
+		var characterSTR = Math.floor(characterSTR);
+		var characterDEX = Math.floor(characterDEX);
+		var characterVIT = Math.floor(characterVIT);
+		var characterAGI = Math.floor(characterAGI);
+		var characterINT = Math.floor(characterINT);
+		var characterMND = Math.floor(characterMND);
+		var characterCHA = Math.floor(characterCHA);
 		
 		document.getElementById('characterHP').innerHTML = characterHP;
 		document.getElementById('characterMP').innerHTML = characterMP;
