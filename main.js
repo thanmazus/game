@@ -14,6 +14,7 @@ var typecheck = "";
 var dualWieldUnlock = 0;
 var dualWieldFirst = "";
 var dualWieldSecond = "";
+var dualWieldActive = 0;
 
 var select = document.getElementById("daggerSelect"); 
 var daggerList =  [{id:1, name:'Beestinger', delay: 1234}, {id:2, name:'Hornetneedle', delay: 2345}];
@@ -34,6 +35,7 @@ function skillClick(skill){
 	
 	if (!check && dw == "true"){
 		uncheckAll();
+		dualWieldActive = 0;
 	}
 	skillLevel =  parseInt(document.getElementById(skill).innerHTML) +1;
 	document.getElementById(skill).innerHTML = skillLevel;
@@ -224,6 +226,7 @@ function SetDualWield(){
 		dualWieldSecond = skillnames[1];
 		
 		dualWieldUnlock = 1;
+		dualWieldActive = 1;
 		resetTime(dualWieldFirst);
 		document.getElementById('isDualWielding').innerHTML = true;
 		
@@ -239,14 +242,14 @@ function resetTime(skill){
 	clearInterval(game);
 	
 	//document.getElementById('gameStatus').innerHTML = dualWieldUnlock;
-	if(dualWieldUnlock == 0) {
+	if(dualWieldUnlock == 0 || dualWieldActive == 0) {
 		game = setInterval(function(){
 		passiveClick(skill);
 		getTotalPoints();
 		document.getElementById('gameStatus').innerHTML = typehaste;
 		}, interval);
 	}
-	else if (dualWieldUnlock == 1) {
+	else if (dualWieldUnlock == 1  && dualWieldActive == 1 ) {
 		var dualWieldHaste;
 		dualWieldHaste = parseFloat(document.getElementById(dualWieldFirst+"Haste").innerHTML);
 		dualWieldHaste = dualWieldHaste + parseFloat(document.getElementById(dualWieldSecond+"Haste").innerHTML);
