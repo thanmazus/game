@@ -1,4 +1,4 @@
-#daggerDiv{
+#daggerSheet{
 	background-color: #003300;
 	color: #ffffff;
 	font-weight: bold;
@@ -6,7 +6,7 @@
 	border-style: solid solid none solid;
 	width: 50%
 }
-#swordDiv{
+#swordSheet{
 	background-color: #000099;
 	color: #ffffff;
 	font-weight: bold;
@@ -14,7 +14,7 @@
 	border-style: solid solid none solid;
 	width: 50%
 }
-#hammerDiv{
+#hammerSheet{
 	background-color: #996633;
 	color: #ffffff;
 	font-weight: bold;
@@ -22,7 +22,7 @@
 	border-style: solid solid none solid;
 	width: 50%
 }
-#specialSkillsDiv{
+#specialSkillsSheet{
 	background-color: #993300;
 	color: #ffffff;
 	font-weight: bold;
@@ -30,7 +30,7 @@
 	border-style: solid solid none solid;
 	width: 50%
 }
-#gameStatusDiv{
+#gameStatusSheet{
 	background-color: #660033;
 	color: #ffffff;
 	font-weight: bold;
@@ -38,31 +38,44 @@
 	border-style: solid solid solid solid;
 	width: 50%
 }
-#daggerDiv button{
+#charStatusSheet{
+	background-color: #732626;
+	color: #ffffff;
+	font-weight: bold;
+	border: #000000;
+	border-style: none solid solid;
+	width: 50%
+}
+#daggerSheet button{
 	background-color: #339966;
 	text-shadow: 1px 1px #222222;
 	color: #ffffff;
 	font-weight: bold;
 }
-#swordDiv button{
+#swordSheet button{
 	background-color: #0099cc;
 	text-shadow: 1px 1px #222222;
 	color: #ffffff;
 	font-weight: bold;
 }
-#hammerDiv button{
+#hammerSheet button{
 	background-color: #cc9900;
 	text-shadow: 1px 1px #222222;
 	color: #ffffff;
 	font-weight: bold;
 }
-#specialSkillsDiv button{
+#specialSkillsSheet button{
 	background-color: #ff6600;
 	color: #ffffff;
 	font-weight: bold;
 }
-#gameStatusDiv button{
+#gameStatusSheet button{
 	background-color: #993366;
+	color: #ffffff;
+	font-weight: bold;
+}
+#charStatusSheet button{
+	background-color: #993333;
 	color: #ffffff;
 	font-weight: bold;
 }
