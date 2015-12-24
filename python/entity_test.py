@@ -1,9 +1,39 @@
-from base_entities import BaseServerStructure, BaseVirusUnit
-from entities import CPU, Wall, R1Collector, R2Collector, Worm, Bot
+from base_entities import (BaseServerStructure, BaseVirusUnit, BaseCharacter,
+                           BaseWeapon, BaseArmor)
+from entities import (CPU, Wall, R1Collector, R2Collector, Worm, Bot, Sword,
+                      Human, ChestArmor)
 import unittest
 
 
 class EntityTest(unittest.TestCase):
+
+    def test_sword(self):
+        test_sword = Sword()
+        self.assertIsInstance(test_sword, Sword)
+        self.assertEqual(test_sword.name, 'Sword')
+        self.assertEqual(test_sword.damage, 5)
+        self.assertEqual(test_sword.level, 1)
+        self.assertEqual(test_sword.attack_speed, 1.50)
+
+    def test_chest_armor(self):
+        test_chest_armor = ChestArmor()
+        self.assertIsInstance(test_chest_armor, ChestArmor)
+        self.assertEqual(test_chest_armor.name, 'Chest Armor')
+        self.assertEqual(test_chest_armor.level, 1)
+        self.assertEqual(test_chest_armor.phy_defense, 10)
+        self.assertEqual(test_chest_armor.mag_defense, 10)
+
+    def test_human(self):
+        test_human = Human()
+        self.assertIsInstance(test_human, Human)
+        self.assertEqual(test_human.name, 'Human Character')
+        self.assertEqual(test_human.level, 1)
+        self.assertEqual(test_human.hp, 150)
+        self.assertEqual(test_human.strength, 5)
+        self.assertEqual(test_human.dexterity, 6)
+        self.assertEqual(test_human.wisdom, 6)
+        self.assertEqual(test_human.phy_defense, 60)
+        self.assertEqual(test_human.mag_defense, 60)
 
     def test_cpu(self):
         test_cpu = CPU()

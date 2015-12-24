@@ -1,4 +1,23 @@
-from base_entities import BaseServerStructure, BaseVirusUnit
+from base_entities import (BaseServerStructure, BaseVirusUnit, BaseCharacter,
+                           BaseWeapon, BaseArmor)
+
+
+class Sword(BaseWeapon):
+    def __init__(self, name="Sword", level=1, damage=5, attack_speed=1.50):
+        BaseWeapon.__init__(self, name, level, damage, attack_speed)
+
+
+class ChestArmor(BaseArmor):
+    def __init__(self, name="Chest Armor", level=1, phy_defense=10,
+                 mag_defense=10):
+        BaseArmor.__init__(self, name, level, phy_defense, mag_defense)
+
+
+class Human(BaseCharacter):
+    def __init__(self, name='Human Character', level=1, hp=150, strength=5,
+                 dexterity=6, wisdom=6, phy_defense=60, mag_defense=60):
+        BaseCharacter.__init__(self, name, level, hp, strength, dexterity,
+                               wisdom, phy_defense, mag_defense)
 
 
 class CPU(BaseServerStructure):
