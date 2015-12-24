@@ -66,16 +66,19 @@
 }
 #specialSkillsSheet button{
 	background-color: #ff6600;
+	text-shadow: 1px 1px #222222;
 	color: #ffffff;
 	font-weight: bold;
 }
 #gameStatusSheet button{
 	background-color: #993366;
+	text-shadow: 1px 1px #222222;
 	color: #ffffff;
 	font-weight: bold;
 }
 #charStatusSheet button{
 	background-color: #993333;
+	text-shadow: 1px 1px #222222;
 	color: #ffffff;
 	font-weight: bold;
 }
