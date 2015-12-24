@@ -15,6 +15,15 @@ var dualWieldUnlock = 0;
 var dualWieldFirst = "";
 var dualWieldSecond = "";
 var dualWieldActive = 0;
+var characterHP = 0.0;
+var characterMP = 0.0;
+var characterSTR = 0.0;
+var characterDEX = 0.0;
+var characterVIT = 0.0;
+var characterAGI = 0.0;
+var characterINT = 0.0;
+var characterMND = 0.0;
+var characterCHA = 0.0;
 
 var select = document.getElementById("daggerSelect"); 
 var daggerList =  [{id:1, name:'Beestinger', delay: 1234}, {id:2, name:'Hornetneedle', delay: 2345}];
@@ -352,6 +361,37 @@ function spendCharacterPoints(){
 		document.getElementById('characterLevel').innerHTML = characterLevel + 1;
 		var nextCost = Math.floor(5 * Math.pow(2, characterLevel));
 		document.getElementById('levelUpCost').innerHTML = nextCost;
+		
+		var characterHP = parseFloat(document.getElementById('characterHP').innerHTML);
+		var characterMP = parseFloat(document.getElementById('characterMP').innerHTML);
+		var characterSTR = parseFloat(document.getElementById('characterSTR').innerHTML);
+		var characterDEX = parseFloat(document.getElementById('characterDEX').innerHTML);
+		var characterVIT = parseFloat(document.getElementById('characterVIT').innerHTML);
+		var characterAGI = parseFloat(document.getElementById('characterAGI').innerHTML);
+		var characterINT = parseFloat(document.getElementById('characterINT').innerHTML);
+		var characterMND = parseFloat(document.getElementById('characterMND').innerHTML);
+		var characterCHA = parseFloat(document.getElementById('characterCHA').innerHTML);
+		
+		var characterHP = characterHP + characterHPScoreList[3].Scale;
+		var characterMP = characterMP + characterMPScoreList[3].Scale;
+		var characterSTR = characterSTR + characterStatScoreList[3].Scale;
+		var characterDEX = characterDEX + characterStatScoreList[3].Scale;
+		var characterVIT = characterVIT + characterStatScoreList[3].Scale;
+		var characterAGI = characterAGI + characterStatScoreList[3].Scale;
+		var characterINT = characterINT + characterStatScoreList[3].Scale;
+		var characterMND = characterMND + characterStatScoreList[3].Scale;
+		var characterCHA = characterCHA + characterStatScoreList[3].Scale;
+		
+		document.getElementById('characterHP').innerHTML = characterHP;
+		document.getElementById('characterMP').innerHTML = characterMP;
+		document.getElementById('characterSTR').innerHTML = characterSTR;
+		document.getElementById('characterDEX').innerHTML = characterDEX;
+		document.getElementById('characterVIT').innerHTML = characterVIT;
+		document.getElementById('characterAGI').innerHTML = characterAGI;
+		document.getElementById('characterINT').innerHTML = characterINT;
+		document.getElementById('characterMND').innerHTML = characterMND;
+		document.getElementById('characterCHA').innerHTML = characterCHA;
+		
 	}
 	else {
 		window.alert("Not enough character points to level up.")
