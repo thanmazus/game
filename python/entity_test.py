@@ -1,7 +1,7 @@
 from base_entities import (BaseServerStructure, BaseVirusUnit, BaseCharacter,
                            BaseWeapon, BaseArmor)
 from entities import (CPU, Wall, R1Collector, R2Collector, Worm, Bot, Sword,
-                      Human, ChestArmor)
+                      Human, Elf, ChestArmor)
 import unittest
 
 
@@ -34,6 +34,18 @@ class EntityTest(unittest.TestCase):
         self.assertEqual(test_human.wisdom, 6)
         self.assertEqual(test_human.phy_defense, 60)
         self.assertEqual(test_human.mag_defense, 60)
+
+    def test_elf(self):
+        test_elf = Elf()
+        self.assertIsInstance(test_elf, Elf)
+        self.assertEqual(test_elf.name, 'Elven Character')
+        self.assertEqual(test_elf.level, 1)
+        self.assertEqual(test_elf.hp, 130)
+        self.assertEqual(test_elf.strength, 4)
+        self.assertEqual(test_elf.dexterity, 7)
+        self.assertEqual(test_elf.wisdom, 6)
+        self.assertEqual(test_elf.phy_defense, 40)
+        self.assertEqual(test_elf.mag_defense, 70)
 
     def test_cpu(self):
         test_cpu = CPU()

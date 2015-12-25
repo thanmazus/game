@@ -20,6 +20,13 @@ class Human(BaseCharacter):
                                wisdom, phy_defense, mag_defense)
 
 
+class Elf(BaseCharacter):
+    def __init__(self, name='Elven Character', level=1, hp=130, strength=4,
+                 dexterity=7, wisdom=6, phy_defense=40, mag_defense=70):
+        BaseCharacter.__init__(self, name, level, hp, strength, dexterity,
+                               wisdom, phy_defense, mag_defense)
+
+
 class CPU(BaseServerStructure):
     def __init__(self, name="CPU", hp=1000, level=1, r1_storage_cap=1000,
                  r2_storage_cap=1000, r1_cur_storage=0, r2_cur_storage=0):
