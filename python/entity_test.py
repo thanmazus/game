@@ -1,7 +1,7 @@
 from base_entities import (BaseServerStructure, BaseVirusUnit, BaseCharacter,
                            BaseWeapon, BaseArmor)
 from entities import (CPU, Wall, R1Collector, R2Collector, Worm, Bot, Sword,
-                      Human, Elf, ChestArmor)
+                      Human, Elf, ChestArmor, Dagger)
 import unittest
 
 
@@ -14,6 +14,14 @@ class EntityTest(unittest.TestCase):
         self.assertEqual(test_sword.damage, 5)
         self.assertEqual(test_sword.level, 1)
         self.assertEqual(test_sword.attack_speed, 1.50)
+
+    def test_dagger(self):
+        test_dagger = Dagger()
+        self.assertIsInstance(test_dagger, Dagger)
+        self.assertEqual(test_dagger.name, 'Dagger')
+        self.assertEqual(test_dagger.damage, 2)
+        self.assertEqual(test_dagger.level, 1)
+        self.assertEqual(test_dagger.attack_speed, 2.00)
 
     def test_chest_armor(self):
         test_chest_armor = ChestArmor()
